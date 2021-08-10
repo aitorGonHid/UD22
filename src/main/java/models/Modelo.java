@@ -1,7 +1,6 @@
 package models;
 import java.sql.*;
 import java.util.Scanner;
-import views.vistaOld;
 
 public class Modelo {
 	
