@@ -6,38 +6,45 @@ import java.sql.SQLException;
 
 public class Conexion {
 	
-	private  static String ip = "192.168.1.146:3306";
-	private  static String user = "remote";
-	private  static String password = "L4t20_Mysql";
-	private  static Connection conn;
-	private static String db = "U22";
+	static String db = "UD22";
+	static String url = "jdbc:mysql://localhost:3306/"+db+"?useTimezone=true&serverTimezone=UTC";
+	static String user = "remote";
+	static String password = "L4t20_Mysql";
 	
-	//Metodo para conectar al servidor "+ ip +"
-	public static void connect() {
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn=DriverManager.getConnection("jdbc:mysql://"+ ip +"?useTimezone=true&serverTimezone=UTC",""+ user +"",""+ password +"");
-			System.out.println("Conexion al servidor: OK");
-		}catch(SQLException | ClassNotFoundException ex  ){
-			System.out.println("Conexion al servidor: FAILED");
-			System.out.println(ex.getMessage());	
-		}
+	Connection conn = null;
+	
+	//Constructor de conexion DB 
+	public Conexion() {
+		try{
+	         //obtenemos el driver de para mysql
+	         Class.forName("com.mysql.cj.jdbc.Driver");
+	         //obtenemos la conexion
+	         conn = DriverManager.getConnection(url,user,password);
+
+	         if (conn!=null){
+	            System.out.print("Conexión a base de datos "+db+"_SUCCESS");
+	         }
+	      }
+	      catch(SQLException e){
+	         System.out.println(e);
+	      }catch(ClassNotFoundException e){
+	         System.out.println(e);
+	      }catch(Exception e){
+	         System.out.println(e);
+	      }
 	}
-	//Metodo para desconectar del servidor
-	public static void disconnect() {
-		try {	
-			conn.close();
-			System.out.println("Desconexion al servidor: OK");
-		} catch (SQLException ex) {
-			System.out.println(ex.getMessage());
-		}
-	}
+	//Desconexion DB
+	public void desconectar(){
+		conn = null;
+	}	
+	
 	//Getter conexion
-	public Connection getConn() {
+	public Connection getConnection() {
 		return conn;
 	}
 	//Getter nombre bd
 	public  String getDb() {
 		return db;
 	}
+	
 }

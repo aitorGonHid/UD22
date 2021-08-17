@@ -1,5 +1,7 @@
 package models.dto;
 
+import java.sql.Date; // <<< Este import o java.util.Date ??
+
 public class Cliente {
 	
 	private Integer id;
@@ -7,18 +9,25 @@ public class Cliente {
 	private String apellido;
 	private String direccion;
 	private Integer dni;
-	private String fecha; //fecha nacimiento
+	private Date fecha; //fecha nacimiento
 	
-	public Cliente(String nombre, String apellido, String direccion, Integer dni, String fecha) {
+	public Cliente() {
+	}
+	
+	public Cliente(String nombre, String apellido, String direccion, Integer dni, Date fecha) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.direccion = direccion;
 		this.dni = dni;
 		this.fecha = fecha;
 	}
-
+	
 	public Integer getId() {
 		return id;
+	}
+	
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -53,11 +62,11 @@ public class Cliente {
 		this.dni = dni;
 	}
 
-	public String getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 }

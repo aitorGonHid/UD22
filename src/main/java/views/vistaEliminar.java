@@ -5,21 +5,23 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import controllers.Control;
+import controllers.Controller;
 import javax.swing.SwingConstants;
 
 public class vistaEliminar extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
-	private Control controller;
+	private Controller controller;
 	private JLabel eliminarLabel, confirmarLabel, idLabel, eliminar;
 	public JTextField confirmarIn;
 	private JButton eliminarButton;
 	private JTextField idIn;
 	
 	public vistaEliminar() {
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setTitle("Eliminar cliente");
 		getContentPane().setLayout(null);
+		setBounds(400, 100, 314, 190);
+		setVisible(false);
 		
 		//Labels
 		eliminarLabel = new JLabel("Introduce identificador del cliente y confirma:");
@@ -34,21 +36,24 @@ public class vistaEliminar extends JFrame{
 		
 		confirmarLabel = new JLabel("Escribe confirmar");
 		confirmarLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		confirmarLabel.setBounds(9, 79, 93, 25);
+		confirmarLabel.setBounds(0, 79, 106, 25);
 		getContentPane().add(confirmarLabel);
 		
 		//TextFields
 		idIn = new JTextField();
-		idIn.setBounds(106, 45, 100, 25);
+		idIn.setBounds(116, 47, 100, 25);
 		getContentPane().add(idIn);
 		
 		confirmarIn = new JTextField();
-		confirmarIn.setBounds(106, 79, 100, 25);
+		confirmarIn.setBounds(116, 79, 100, 25);
 		getContentPane().add(confirmarIn);
 		
 		//Boton
 		eliminarButton = new JButton("Eliminar");
-		eliminarButton.setBounds(86, 117, 120, 25);
+		eliminarButton.setBounds(96, 115, 120, 25);
 		getContentPane().add(eliminarButton);
+	}
+	public void setControlador(Controller controlador) {
+		this.controller = controlador;
 	}
 }

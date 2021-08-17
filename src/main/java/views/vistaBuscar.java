@@ -1,25 +1,32 @@
 package views;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import controllers.Control;
+import controllers.Controller;
+import models.dto.Cliente;
+
 import javax.swing.SwingConstants;
 
-public class vistaBuscar extends JFrame{
+public class vistaBuscar extends JFrame implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;
-	private Control controller;
+	private Controller controller;
 	private JLabel nombreLabel, apellidoLabel, direccionLabel, dniLabel, fechaLabel, idLabel;
 	public JTextField nombreIn, apellidoIn, direccionIn, dniIn, fechaIn;
 	private JButton buscarButton;
 	private JTextField idIn;
 	
 	public vistaBuscar() {
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setTitle("Buscar cliente");
 		getContentPane().setLayout(null);
+		setBounds(400, 100, 234, 294);
+		setVisible(false);
 		
 		//Labels
 		idLabel = new JLabel("ID cliente:");
@@ -87,5 +94,19 @@ public class vistaBuscar extends JFrame{
 		buscarButton = new JButton("Buscar");
 		buscarButton.setBounds(87, 221, 120, 25);
 		getContentPane().add(buscarButton);
+		buscarButton.addActionListener(this);
+	}
+	//Buscar cliente
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource( ) == buscarButton ) {
+			Cliente cliente = controller.getDao().buscarCliente(Integer.parseInt(idIn.getText()));
+			nombreIn.setText(cliente.getNombre());
+		}
+		
+	}
+	//añadir controlador
+	public void setControlador(Controller controlador) {
+		this.controller = controlador;
 	}
 }

@@ -5,13 +5,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import controllers.Control;
+import controllers.Controller;
 import javax.swing.SwingConstants;
 
 public class vistaActualizar extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
-	private Control controller;
+	private Controller controller;
 	private JLabel nombreLabel, apellidoLabel, direccionLabel, dniLabel, fechaLabel, idLabel;
 	public JTextField nombreIn, apellidoIn, direccionIn, dniIn, fechaIn;
 	private JButton actualizarButton;
@@ -19,8 +19,10 @@ public class vistaActualizar extends JFrame{
 	private JLabel actualizarLabel;
 	
 	public vistaActualizar() {
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setTitle("ActualizarCliente");
 		getContentPane().setLayout(null);
+		setBounds(400, 100, 318, 335);
+		setVisible(false);
 		
 		//Labels
 		actualizarLabel = new JLabel("Introduce el identificador y campos que actualizar:");
@@ -87,5 +89,8 @@ public class vistaActualizar extends JFrame{
 		actualizarButton = new JButton("Actualizar");
 		actualizarButton.setBounds(86, 255, 120, 25);
 		getContentPane().add(actualizarButton);
+	}
+	public void setControlador(Controller controlador) {
+		this.controller = controlador;
 	}
 }

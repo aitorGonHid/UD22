@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import controllers.Control;
+import controllers.Controller;
 import java.awt.Color;
 import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
@@ -18,14 +18,16 @@ import java.awt.GridLayout;
 
 public class vistaRegistrar extends JFrame{
 	
-	private Control controller;
+	private Controller controller;
 	private JLabel registrarLabel, nombreLabel, direccionLabel, dniLabel, fechaLabel;
 	public JTextField nombreIn, apellidoIn, direccionIn, dniIn, fechaIn;
 	private JButton añadirButton;
 	
 	public vistaRegistrar() {
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setTitle("Registrar cliente");
 		getContentPane().setLayout(null);
+		setBounds(400, 100, 284, 294);
+		setVisible(false);
 		
 		//Labels
 		registrarLabel = new JLabel("Introduce los valores de cada campo:");
@@ -84,5 +86,8 @@ public class vistaRegistrar extends JFrame{
 		añadirButton.setBounds(93, 221, 120, 25);
 		getContentPane().add(añadirButton);
 		
+	}
+	public void setControlador(Controller controlador) {
+		this.controller = controlador;
 	}
 }
