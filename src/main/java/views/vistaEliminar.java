@@ -1,14 +1,20 @@
 package views;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Date;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import controllers.Controller;
+import models.dto.Cliente;
+
 import javax.swing.SwingConstants;
 
-public class vistaEliminar extends JFrame{
+public class vistaEliminar extends JFrame implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;
 	private Controller controller;
@@ -52,8 +58,21 @@ public class vistaEliminar extends JFrame{
 		eliminarButton = new JButton("Eliminar");
 		eliminarButton.setBounds(96, 115, 120, 25);
 		getContentPane().add(eliminarButton);
+		eliminarButton.addActionListener(this);
 	}
+	//Acceso al controlador
 	public void setControlador(Controller controlador) {
 		this.controller = controlador;
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getSource( ) == eliminarButton) {
+			if (!confirmarIn.getText().equals("eliminar_"+idIn.getText())) {
+				System.out.println("Escribe 'eliminar_' seguido del identificador, para confirmar la operacion.");
+			} else {
+				controller.getDao().eliminarCliente(idIn.getText());
+			}
+		}
 	}
 }

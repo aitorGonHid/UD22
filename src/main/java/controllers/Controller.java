@@ -3,7 +3,6 @@ package controllers;
 import java.awt.event.*;
 import javax.swing.*;
 
-import models.conexion.Conexion;
 import models.dao.ClienteDao;
 import models.dto.Cliente;
 import views.*;
@@ -12,7 +11,6 @@ public class Controller {
 	
 	
 	//Modelo
-	private Conexion conexion;
 	private ClienteDao dao;
 	private Cliente cliente;
 	//Vistas
@@ -24,7 +22,6 @@ public class Controller {
 
 	//Constructor
 	public Controller () {
-		this.conexion = new Conexion();
 		this.dao = new ClienteDao();
 	}
 	//Iniciar vista
@@ -54,12 +51,6 @@ public class Controller {
 		this.vRegistrar = new vistaRegistrar();
 		this.vRegistrar.setControlador(this);
 		this.vRegistrar.setVisible(true);
-	}
-	public Conexion getConexion() {
-		return conexion;
-	}
-	public void setConexion(Conexion conexion) {
-		this.conexion = conexion;
 	}
 	public ClienteDao getDao() {
 		return dao;

@@ -1,14 +1,20 @@
 package views;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Date;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import controllers.Controller;
+import models.dto.Cliente;
+
 import javax.swing.SwingConstants;
 
-public class vistaActualizar extends JFrame{
+public class vistaActualizar extends JFrame implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;
 	private Controller controller;
@@ -89,8 +95,27 @@ public class vistaActualizar extends JFrame{
 		actualizarButton = new JButton("Actualizar");
 		actualizarButton.setBounds(86, 255, 120, 25);
 		getContentPane().add(actualizarButton);
+		actualizarButton.addActionListener(this);
 	}
+	//Acceso al controlador
 	public void setControlador(Controller controlador) {
 		this.controller = controlador;
 	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource( ) == actualizarButton ) {
+			//Se crea un objeto cliente a partir de los valores introducidos en los campos
+			Cliente modificado = new Cliente();
+			modificado.setId(Integer.parseInt(idIn.getText()));
+			modificado.setNombre(nombreIn.getText());
+			modificado.setApellido(apellidoIn.getText());
+			modificado.setDireccion(direccionIn.getText());
+			modificado.setDni(Integer.parseInt(dniIn.getText()));
+			modificado.setFecha(Date.valueOf(fechaIn.getText()));
+			//Se modifica el cliente de la base de datos a partir del objeto
+			controller.getDao().modificarCliente(modificado);
+		}
+		
+	}
+	
 }

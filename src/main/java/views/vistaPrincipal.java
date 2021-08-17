@@ -57,6 +57,10 @@ public class vistaPrincipal extends JFrame implements ActionListener{
 		buscarButton.addActionListener(this);
 		
 	}
+	//Acceso al controlador	
+	public void setControlador(Controller controlador) {
+		this.controller = controlador;
+	}
 	
 	//Seleccionar vista
 	@Override
@@ -74,9 +78,5 @@ public class vistaPrincipal extends JFrame implements ActionListener{
 			controller.mostrarVistaBuscar();
 		}
 		
-	}
-	
-	public void setControlador(Controller controlador) {
-		this.controller = controlador;
 	}
 }

@@ -2,6 +2,8 @@ package views;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,6 +23,7 @@ public class vistaBuscar extends JFrame implements ActionListener {
 	public JTextField nombreIn, apellidoIn, direccionIn, dniIn, fechaIn;
 	private JButton buscarButton;
 	private JTextField idIn;
+	private DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
 	
 	public vistaBuscar() {
 		setTitle("Buscar cliente");
@@ -60,7 +63,6 @@ public class vistaBuscar extends JFrame implements ActionListener {
 		getContentPane().add(fechaLabel);
 
 		//TextFields
-
 		idIn = new JTextField();
 		idIn.setBounds(107, 11, 100, 25);
 		getContentPane().add(idIn);
@@ -96,17 +98,27 @@ public class vistaBuscar extends JFrame implements ActionListener {
 		getContentPane().add(buscarButton);
 		buscarButton.addActionListener(this);
 	}
+	//Acceso al controlador
+	public void setControlador(Controller controlador) {
+		this.controller = controlador;
+	}
 	//Buscar cliente
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource( ) == buscarButton ) {
 			Cliente cliente = controller.getDao().buscarCliente(Integer.parseInt(idIn.getText()));
 			nombreIn.setText(cliente.getNombre());
+			nombreIn.setEnabled(true);
+			apellidoIn.setText(cliente.getApellido());
+			apellidoIn.setEnabled(true);
+			direccionIn.setText(cliente.getDireccion());
+			direccionIn.setEnabled(true);
+			dniIn.setText(String.valueOf(cliente.getDni()));
+			dniIn.setEnabled(true);
+			fechaIn.setText(dateFormat.format(cliente.getFecha()));
+			fechaIn.setEnabled(true);
 		}
 		
 	}
-	//añadir controlador
-	public void setControlador(Controller controlador) {
-		this.controller = controlador;
-	}
+	
 }
