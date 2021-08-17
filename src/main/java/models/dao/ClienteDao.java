@@ -119,13 +119,13 @@ public class ClienteDao {
 	public void modificarCliente(Cliente miCliente)
 	{		
 		connect();
-		
 		try{
 			String queryUseDb = "USE UD22;";
 			Statement stdb = conexion.createStatement();
 			stdb.executeUpdate(queryUseDb);
 			
 			String consulta="UPDATE clientes SET nombre= ? , apellido= ? , direccion= ? , dni= ?, fecha= ? WHERE id= ? ";
+			System.out.println(consulta);
 			PreparedStatement st = conexion.prepareStatement(consulta);
 			//metodo setTypoAtributo(indice, atributo) susituye los ? de la consulta por atributos el objeto parametro
 			//cada ? se sustituye por uno de los atributos del objeto cliente
@@ -138,14 +138,12 @@ public class ClienteDao {
 			
             st.executeUpdate();
             
-          JOptionPane.showMessageDialog(null, " Se ha Modificado Correctamente ","Confirmación",JOptionPane.INFORMATION_MESSAGE);
-          System.out.println(consulta);
+            System.out.println(consulta);
          
 
         }catch(SQLException	 e){
-
+        	System.out.println("Error al modificar el cliente.");
             System.out.println(e);
-            JOptionPane.showMessageDialog(null, "Error al Modificar","Error",JOptionPane.ERROR_MESSAGE);
         }
 		
 		disconnect();

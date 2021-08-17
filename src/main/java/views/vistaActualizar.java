@@ -3,6 +3,7 @@ package views;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
+import java.text.ParseException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -112,7 +113,6 @@ public class vistaActualizar extends JFrame implements ActionListener{
 			modificado.setDireccion(direccionIn.getText());
 			modificado.setDni(Integer.parseInt(dniIn.getText()));
 			modificado.setFecha(Date.valueOf(fechaIn.getText()));
-			//Se modifica el cliente de la base de datos a partir del objeto
 			controller.getDao().modificarCliente(modificado);
 		}
 		
