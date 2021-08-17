@@ -21,6 +21,5 @@ public class App
     	Controller controller = new Controller();
     	//abrir ventana principal
     	controller.iniciarVista();
-  	
     }
 }

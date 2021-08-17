@@ -7,9 +7,7 @@ import models.dao.ClienteDao;
 import models.dto.Cliente;
 import views.*;
 
-public class Controller {
-	
-	
+public class Controller {	
 	//Modelo
 	private ClienteDao dao;
 	private Cliente cliente;
@@ -64,39 +62,4 @@ public class Controller {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
-//	Accion que abre la vista de cada funcion del crud desde la ventana principal
-//	ActionListener doAction = new ActionListener() {
-//		@Override
-//		public void actionPerformed(ActionEvent e) {
-//			JButton src = (JButton)e.getSource();
-//			String action = src.getText();
-//			
-//			if (action.equals("Buscar")) {
-//				vBuscar = new vistaBuscar();
-//				vBuscar.setTitle("Buscar cliente");
-//				vBuscar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//				vBuscar.setVisible(true);
-//			} else if (action.equals("Actualizar")) {
-//				vActualizar = new vistaActualizar();
-//				vActualizar.setTitle("Actualizar cliente");
-//				vActualizar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//				vActualizar.setVisible(true);				
-//			} else if (action.equals("Registrar")) {
-//				vRegistrar = new vistaRegistrar();
-//				vRegistrar.setTitle("Registrar cliente");
-//				vRegistrar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//				vRegistrar.setVisible(true);				
-//			} else if (action.equals("Eliminar")) {
-//				vEliminar = new vistaEliminar();
-//				vEliminar.setTitle("Eliminar cliente");
-//				vEliminar.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//				vEliminar.setVisible(true);		
-//			}			
-//			
-//		}
-//	};
-
-	
-	
 }
